@@ -42,3 +42,15 @@ class Dipendente(models.Model):
     domicilio = models.CharField(max_length=32)
     idMansione = models.ForeignKey(Mansione)
 
+# Modello Ambiente di lavoro
+class Ambiente(models.Model):
+    nomeAmbiente = models.CharField(max_length=56)
+    numeroFinestre =  models.PositiveIntegerField(null=True)
+    numeroPorte = models.PositiveIntegerField(null=True)
+    numeroPiano = models.PositiveIntegerField(null=True)
+    ubicazione = models.CharField(max_length=56, null=True)
+
+#   funzione che ritorna il nome dell'ambiente di lavoro
+    def __str__(self):
+        return  self.nomeAmbiente
+
