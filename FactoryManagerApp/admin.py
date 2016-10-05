@@ -13,7 +13,9 @@ class DipendenteLavoraInline(admin.TabularInline):
 
 class DipendenteUtilizzaInLine (admin.TabularInline):
     model = Utilizza
-    extra = 3
+    readonly_fields = ('id_strumento',)
+    can_delete = False
+    extra = 0
 
 class DipendenteAdmin(admin.ModelAdmin):
     list_display = ('nome', 'cognome', 'idMansione', 'email')
@@ -36,10 +38,21 @@ class AmbienteAdmin(admin.ModelAdmin):
     ordering = ('ubicazione',)
 
 
+class StrumentoUtilizzatoInLine(admin.TabularInline):
+    model = Utilizza
+    extra = 0
+
+class StrumentoAdmin (admin.ModelAdmin):
+    inlines = [StrumentoUtilizzatoInLine]
+    ordering = ('id',)
+
+
+
+
 
 # Register your models here.
 
-admin.site.register(Strumento)
+admin.site.register(Strumento,StrumentoAdmin)
 admin.site.register(Dipendente, DipendenteAdmin)
 admin.site.register(Mansione)
 admin.site.register(Ambiente,AmbienteAdmin)
