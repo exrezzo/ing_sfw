@@ -54,3 +54,17 @@ class Ambiente(models.Model):
     def __str__(self):
         return  self.nomeAmbiente
 
+# Associa un dipendente ad uno o piu luoghi di lavoro.
+class Lavora(models.Model):
+    class Meta:
+        unique_together = (('id_dipendente', 'id_ambiente'),)
+    id_dipendente = models.ForeignKey(Dipendente)
+    id_ambiente = models.ForeignKey(Ambiente)
+    postazioneFissa = models.BooleanField()
+
+# Esprime l'assengazione degli strumenti ai dipendenti.
+class Utilizza(models.Model):
+    class Meta:
+        unique_together = (('id_dipendente', 'id_strumento'))
+    id_dipendente = models.ForeignKey(Dipendente)
+    id_strumento = models.ForeignKey(Strumento)
