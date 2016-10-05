@@ -90,7 +90,7 @@ class Lavora(models.Model):
     postazioneFissa = models.BooleanField()
 
     def __str__(self):
-        return self.id_ambiente + self.id_dipendente
+        return self.id_ambiente.nomeAmbiente
 
 
 # Esprime l'assengazione degli strumenti ai dipendenti.
@@ -104,4 +104,4 @@ class Utilizza(models.Model):
     id_strumento = models.ForeignKey(Strumento)
 
     def __str__(self):
-        return self.id_dipendente + self.id_strumento
+        return self.id_dipendente.nome
