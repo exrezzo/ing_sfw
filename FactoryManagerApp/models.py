@@ -72,7 +72,7 @@ class Strumento(models.Model):
     marca = models.CharField(max_length=56)
     annoAcquisto = models.CharField(max_length=56, null=True, blank=True)
     tipologia = models.CharField(max_length=56)
-    dipendenti = models.ManyToManyField ('Dipendente')
+    dipendenti = models.ManyToManyField ('Dipendente', null=True, blank=True)
 
     def __str__(self):
         return self.nome+ ' ' + self.modello + ' ' + self.tipologia
