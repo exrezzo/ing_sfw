@@ -24,8 +24,16 @@ class DipendenteAdmin(admin.ModelAdmin):
     list_display = ('nome', 'cognome', 'idMansione', 'email')
     inlines = [DipendenteUtilizzaInLine]
 
+    #Il sistema deve permettere di visualizzare gli ambienti associati ad un dipendente o a nessuno
+    3849
 
+class DipendenteLavoraInline (admin.TabularInline):
+    model = Lavora
+    extra = 2
 
+class AmbienteAdmin (admin.ModelAdmin):
+    list_display = ('nomeAmbiente','ubicazione')
+    inlines = [DipendenteLavoraInline]
 
 
 # Register your models here.
