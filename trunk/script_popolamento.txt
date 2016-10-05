@@ -1,4 +1,4 @@
-USE factory_manager_db_test;
+USE factorymanager_db_test;
 
 INSERT into factorymanagerapp_mansione (nome) VALUES ("Impiegato");
 INSERT into factorymanagerapp_mansione (nome) VALUES ("Segretario");

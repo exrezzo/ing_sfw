@@ -75,7 +75,7 @@ class Strumento(models.Model):
     tipologia = models.CharField(max_length=56)
 
     def __str__(self):
-        return self.modello + self.nome_strumento + self.marca
+        return self.modello +' ' + self.nome_strumento + ' '+ self.marca
 
 
 # Associa un dipendente ad uno o piu luoghi di lavoro.
