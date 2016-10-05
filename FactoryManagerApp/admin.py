@@ -25,7 +25,7 @@ class DipendenteLavoraInline (admin.TabularInline):
     model = Lavora
     extra = 2
 
-#Visualizzazione ambiente di lavoro in admin
+#  Visualizzazione ambiente di lavoro in admin
 class AmbienteAdmin(admin.ModelAdmin):
     list_display = ('nomeAmbiente', 'ubicazione')
     fieldsets = [
