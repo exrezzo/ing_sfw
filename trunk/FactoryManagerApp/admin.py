@@ -42,6 +42,4 @@ class AmbienteAdmin(admin.ModelAdmin):
 admin.site.register(Strumento)
 admin.site.register(Dipendente, DipendenteAdmin)
 admin.site.register(Mansione)
-admin.site.register(Lavora)
-admin.site.register(Utilizza)
 admin.site.register(Ambiente,AmbienteAdmin)
