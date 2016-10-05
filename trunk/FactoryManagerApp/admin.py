@@ -30,6 +30,7 @@ class AmbienteAdmin(admin.ModelAdmin):
         ('Ambiente',               {'fields': ['nomeAmbiente']}),
     ]
     inlines = [StrumentiInLine,DipendenteLavoraInline]
+    ordering = ('ubicazione',)
 
 
 
