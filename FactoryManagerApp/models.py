@@ -54,7 +54,7 @@ class Ambiente(models.Model):
     numeroFinestre = models.PositiveIntegerField(null=True)
     numeroPorte = models.PositiveIntegerField(null=True)
     numeroPiano = models.PositiveIntegerField(null=True)
-    ubicazione = models.CharField(max_length=56, null=True)
+    ubicazione = models.CharField(max_length=56)
 
     #   funzione che ritorna il nome dell'ambiente di lavoro
     def __str__(self):
