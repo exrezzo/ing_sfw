@@ -1,20 +1,4 @@
 from django.db import models
-## creazione modello strumento con id_ambiente come attributo chiave esterna##
-
-
-class Strumento(models.Model):
-
-        #id_ambiente = models.ForeignKey(Ambiente)
-        nome_strumento = models.CharField(max_length=56)
-        modello = models.CharField(max_length=56)
-        marca = models.CharField(max_length=56)
-        anno_acquisto = models.CharField(max_length=56)
-        tipologia = models.CharField(max_length=56)
-
-        def __str__(self):
-            return self.modello + self.nome_strumento + self.marca
-
-
 
 # Aggiungo dizionario per sesso
 SESSO = (
@@ -27,11 +11,24 @@ SESSO = (
 # 'Mansione'
 # @param nome: denominazione mansione eseguita dal Dipendente
 class Mansione(models.Model):
-    nome=models.CharField(max_length=32)
+
+    class Meta:
+        verbose_name = 'Mansione'
+        verbose_name_plural = 'Mansioni' \
+                              ''
+    nome = models.CharField(max_length=32)
+
+    def __str__(self):
+        return self.nome
 
 # 'Dipendente'
 # definizione attributi generici di dipendente
 class Dipendente(models.Model):
+
+    class Meta:
+        verbose_name = 'Dipendente'
+        verbose_name_plural = 'Dipendenti'
+
     nome = models.CharField(max_length=32)
     cognome = models.CharField(max_length=32)
     sesso = models.CharField(max_length=7, choices=SESSO)
@@ -42,8 +39,16 @@ class Dipendente(models.Model):
     domicilio = models.CharField(max_length=32)
     idMansione = models.ForeignKey(Mansione)
 
+    def __str__(self):
+        return self.nome + ' ' + self.cognome
+
 # Modello Ambiente di lavoro
 class Ambiente(models.Model):
+
+    class Meta:
+        verbose_name = 'Ambiente'
+        verbose_name_plural = 'Ambienti'
+
     nomeAmbiente = models.CharField(max_length=56)
     numeroFinestre =  models.PositiveIntegerField(null=True)
     numeroPorte = models.PositiveIntegerField(null=True)
@@ -54,10 +59,29 @@ class Ambiente(models.Model):
     def __str__(self):
         return  self.nomeAmbiente
 
+# creazione modello strumento con id_ambiente come attributo chiave esterna##
+class Strumento(models.Model):
+    class Meta:
+        verbose_name = 'Strumento'
+        verbose_name_plural = 'Strumenti'
+
+    id_ambiente = models.ForeignKey(Ambiente, null=True, blank=True)
+    nome_strumento = models.CharField(max_length=56)
+    modello = models.CharField(max_length=56)
+    marca = models.CharField(max_length=56)
+    anno_acquisto = models.CharField(max_length=56, null=True, blank=True)
+    tipologia = models.CharField(max_length=56)
+
+    def __str__(self):
+        return self.modello + self.nome_strumento + self.marca
+
+
 # Associa un dipendente ad uno o piu luoghi di lavoro.
 class Lavora(models.Model):
     class Meta:
         unique_together = (('id_dipendente', 'id_ambiente'),)
+        verbose_name = 'Lavora'
+        verbose_name_plural = 'Lavorano'
     id_dipendente = models.ForeignKey(Dipendente)
     id_ambiente = models.ForeignKey(Ambiente)
     postazioneFissa = models.BooleanField()
@@ -66,5 +90,7 @@ class Lavora(models.Model):
 class Utilizza(models.Model):
     class Meta:
         unique_together = (('id_dipendente', 'id_strumento'))
+        verbose_name = 'Utilizza'
+        verbose_name_plural = 'Utilizzano'
     id_dipendente = models.ForeignKey(Dipendente)
     id_strumento = models.ForeignKey(Strumento)
