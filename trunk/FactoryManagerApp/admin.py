@@ -29,6 +29,7 @@ class AmbienteAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Ambiente',               {'fields': ['nomeAmbiente']}),
     ]
+    #sono visualizzati gli strumenti presenti in quell'ambiente e i dipendenti associati a tale ambiente
     inlines = [StrumentiInLine,DipendenteLavoraInline]
     ordering = ('ubicazione',)
 
