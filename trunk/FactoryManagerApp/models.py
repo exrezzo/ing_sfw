@@ -41,7 +41,7 @@ class Dipendente(models.Model):
     idMansione = models.ForeignKey(Mansione)
 
     def __str__(self):
-        return self.nome + ' ' + self.cognome
+        return self.nome + ' ' + self.cognome + ' ' + self.codiceFiscale
 
 
 # Modello Ambiente di lavoro
@@ -58,7 +58,7 @@ class Ambiente(models.Model):
 
     #   funzione che ritorna il nome dell'ambiente di lavoro
     def __str__(self):
-        return self.nomeAmbiente
+        return self.ubicazione + ' -  ' + self.nomeAmbiente
 
 
 # creazione modello strumento con id_ambiente come attributo chiave esterna##
@@ -75,7 +75,7 @@ class Strumento(models.Model):
     tipologia = models.CharField(max_length=56)
 
     def __str__(self):
-        return self.modello +' ' + self.nome_strumento + ' '+ self.marca
+        return '(ID-'+str(self.pk) + ') ' + self.modello +' ' + self.nome_strumento + ' ' + self.marca
 
 
 # Associa un dipendente ad uno o piu luoghi di lavoro.
