@@ -5,14 +5,7 @@ from .models import *
 #visualizzare gli strumenti
 class StrumentiInLine(admin.TabularInline):
     model = Strumento
-    extra = 5
-
-class AmbienteAdmin(admin.ModelAdmin):
-    fieldsets = [
-        ('Ambiente',               {'fields': ['nomeAmbiente']}),
-    ]
-    inlines = [StrumentiInLine]
-
+    extra = 2
 
 
 
@@ -25,15 +18,19 @@ class DipendenteAdmin(admin.ModelAdmin):
     inlines = [DipendenteUtilizzaInLine]
 
     #Il sistema deve permettere di visualizzare gli ambienti associati ad un dipendente o a nessuno
-    3849
 
 class DipendenteLavoraInline (admin.TabularInline):
     model = Lavora
     extra = 2
 
-class AmbienteAdmin (admin.ModelAdmin):
-    list_display = ('nomeAmbiente','ubicazione')
-    inlines = [DipendenteLavoraInline]
+#Visualizzazione ambiente di lavoro in admin
+class AmbienteAdmin(admin.ModelAdmin):
+    list_display = ('nomeAmbiente', 'ubicazione')
+    fieldsets = [
+        ('Ambiente',               {'fields': ['nomeAmbiente']}),
+    ]
+    inlines = [StrumentiInLine,DipendenteLavoraInline]
+
 
 
 # Register your models here.
