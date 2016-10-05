@@ -7,7 +7,9 @@ class StrumentiInLine(admin.TabularInline):
     model = Strumento
     extra = 2
 
-
+class DipendenteLavoraInline(admin.TabularInline):
+    model = Lavora
+    extra = 2
 
 class DipendenteUtilizzaInLine (admin.TabularInline):
     model = Utilizza
@@ -15,7 +17,7 @@ class DipendenteUtilizzaInLine (admin.TabularInline):
 
 class DipendenteAdmin(admin.ModelAdmin):
     list_display = ('nome', 'cognome', 'idMansione', 'email')
-    inlines = [DipendenteUtilizzaInLine]
+    inlines = [DipendenteUtilizzaInLine,DipendenteLavoraInline]
 
     #Il sistema deve permettere di visualizzare gli ambienti associati ad un dipendente o a nessuno
 
