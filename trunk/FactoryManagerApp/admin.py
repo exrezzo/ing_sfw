@@ -21,6 +21,7 @@ from .models import *
 # #  Visualizzazione ambiente di lavoro in admin
 
 class AmbienteAdmin(admin.ModelAdmin):
+    filter_horizontal = ('dipendenti',)
     list_display = ('nome', 'ubicazione')
     fieldsets = [
         ('Ambiente', {'fields': ['nome', 'numeroFinestre', 'numeroPorte', 'numeroPiano', 'ubicazione', 'dipendenti']}),
@@ -32,6 +33,7 @@ class AmbienteAdmin(admin.ModelAdmin):
 #
 #
 class StrumentoAdmin(admin.ModelAdmin):
+    filter_horizontal = ('dipendenti', )
     list_display = ('nome', 'modello', 'marca',)
     fieldsets = [
         ('Strumenti',
