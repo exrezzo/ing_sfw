@@ -96,8 +96,13 @@ except ImportError:
 
 # Django Suit configuration example
 SUIT_CONFIG = {
-   # header
-     'ADMIN_NAME': 'Factory Manager Administration',
+    # header
+    'ADMIN_NAME': 'Factory Manager Administration',
+    'MENU_ICONS': {
+        'sites': 'icon-leaf',
+        'auth': 'icon-lock',
+        'FactoryManagerApp': 'icon-pencil',
+    },
 
 }
 # Internationalization
