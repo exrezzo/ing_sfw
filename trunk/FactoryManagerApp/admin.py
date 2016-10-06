@@ -41,8 +41,7 @@ class StrumentoAdmin(admin.ModelAdmin):
 
 
 
-#
-#
+
 #
 # # Register your models here.
 #
