@@ -40,7 +40,7 @@ class Dipendente(models.Model):
     mansione = models.ForeignKey(Mansione)
 
     def __str__(self):
-        return self.nome
+        return str(self.codiceFiscale) + ' - ' + str(self.nome) + ' ' + self.cognome
 
 # Modello Ambiente di lavoro
 class Ambiente(models.Model):
