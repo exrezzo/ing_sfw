@@ -38,8 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'FactoryManagerApp'
-
+    'FactoryManagerApp',
 )
 
 # from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
@@ -77,6 +76,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'FactoryManagerProject.wsgi.application'
 
 
@@ -94,7 +94,12 @@ try:
 except ImportError:
     pass
 
+# Django Suit configuration example
+SUIT_CONFIG = {
+   # header
+     'ADMIN_NAME': 'Factory Manager Administration',
 
+}
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
