@@ -36,6 +36,7 @@ class AmbienteAdmin(admin.ModelAdmin):
 class StrumentoAdmin(admin.ModelAdmin):
     filter_horizontal = ('dipendenti', )
     list_display = ('nome', 'marca', 'modello',)
+    list_filter = ('marca','nome','dipendenti', 'ambiente')
     fieldsets = [
         ('Strumento',
          {'fields': ['nome', 'modello', 'marca', 'ambiente', 'annoAcquisto', 'tipologia', 'dipendenti']}),
