@@ -29,6 +29,7 @@ class AmbienteAdmin(admin.ModelAdmin):
         #sono visualizzati gli strumenti presenti in quell'ambiente e i dipendenti associati a tale ambiente
 
     ordering = ('ubicazione',)
+    search_fields = ('nome', 'ubicazione', )
 #
 #
 #
@@ -40,6 +41,7 @@ class StrumentoAdmin(admin.ModelAdmin):
          {'fields': ['nome', 'modello', 'marca', 'ambiente', 'annoAcquisto', 'tipologia', 'dipendenti']}),
     ]
     ordering = ('tipologia', 'marca', 'modello',)
+    search_fields = ('nome', 'marca', 'modello', 'tipologia', )
 
 
 class MansioneAdmin(admin.ModelAdmin):
@@ -48,6 +50,7 @@ class MansioneAdmin(admin.ModelAdmin):
         ('Mansione',
          {'fields': ['nome',]}),
     ]
+    search_fields = ('nome',)
 
 
 class DipendenteAdmin(admin.ModelAdmin):
@@ -58,6 +61,7 @@ class DipendenteAdmin(admin.ModelAdmin):
          {'fields': ['nome','cognome','sesso','dataNascita','codiceFiscale','email','telefono','domicilio','mansione',]})
     ]
     ordering = ('mansione',)
+    search_fields = ('nome', 'cognome', 'codiceFiscale', 'email', 'domicilio', )
 #
 # # Register your models here.
 #
