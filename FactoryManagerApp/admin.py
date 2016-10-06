@@ -19,15 +19,15 @@ from .models import *
 #
 #
 # #  Visualizzazione ambiente di lavoro in admin
-# class AmbienteAdmin(admin.ModelAdmin):
-#     list_display = ('nomeAmbiente', 'ubicazione')
-#     fieldsets = [
-#         ('Ambiente',               {'fields': ['nomeAmbiente']}),
-#     ]
-#     #sono visualizzati gli strumenti presenti in quell'ambiente e i dipendenti associati a tale ambiente
-#     inlines = [StrumentiInLine,]
-#     ordering = ('ubicazione',)
-#
+
+class AmbienteAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'ubicazione')
+    fieldsets = [
+        ('Ambiente', {'fields': ['nome', 'numeroFinestre', 'numeroPorte', 'numeroPiano', 'ubicazione', 'dipendenti']}),
+    ]
+        #sono visualizzati gli strumenti presenti in quell'ambiente e i dipendenti associati a tale ambiente
+
+    ordering = ('ubicazione',)
 #
 #
 #
@@ -35,7 +35,8 @@ from .models import *
 #    # inlines = [StrumentoUtilizzatoInLine]
 #     ordering = ('id',)
 #
-#
+
+
 #
 #
 #
@@ -44,8 +45,7 @@ from .models import *
 # admin.site.register(Strumento,StrumentoAdmin)
 # admin.site.register(Dipendente, DipendenteAdmin)
 # admin.site.register(Mansione)
-# admin.site.register(Ambiente,AmbienteAdmin)
+admin.site.register(Ambiente,AmbienteAdmin)
 admin.site.register(Strumento)
 admin.site.register(Dipendente)
 admin.site.register(Mansione)
-admin.site.register(Ambiente)
