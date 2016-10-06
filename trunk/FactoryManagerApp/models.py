@@ -42,7 +42,7 @@ class Dipendente(models.Model):
 
 
     def __str__(self):
-     return self.nome+''+self.cognome
+     return  self.codiceFiscale + ' - ' + self.nome+' '+ self.cognome
 
 
 # Modello Ambiente di lavoro
