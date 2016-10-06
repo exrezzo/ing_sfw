@@ -31,10 +31,14 @@ class AmbienteAdmin(admin.ModelAdmin):
 #
 #
 #
-# class StrumentoAdmin (admin.ModelAdmin):
-#    # inlines = [StrumentoUtilizzatoInLine]
-#     ordering = ('id',)
-#
+class StrumentoAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'modello', 'marca',)
+    fieldsets = [
+        ('Strumenti',
+         {'fields': ['nome', 'modello', 'marca', 'ambiente', 'annoAcquisto', 'tipologia', 'dipendenti']}),
+    ]
+    ordering = ('tipologia', 'marca', 'modello',)
+
 
 
 #
@@ -45,7 +49,8 @@ class AmbienteAdmin(admin.ModelAdmin):
 # admin.site.register(Strumento,StrumentoAdmin)
 # admin.site.register(Dipendente, DipendenteAdmin)
 # admin.site.register(Mansione)
-admin.site.register(Ambiente,AmbienteAdmin)
-admin.site.register(Strumento)
-admin.site.register(Dipendente)
 admin.site.register(Mansione)
+admin.site.register(Ambiente, AmbienteAdmin)
+admin.site.register(Dipendente)
+admin.site.register(Strumento, StrumentoAdmin)
+

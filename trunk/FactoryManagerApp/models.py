@@ -56,8 +56,7 @@ class Ambiente(models.Model):
     dipendenti = models.ManyToManyField(Dipendente)
 
     #   funzione che ritorna il nome dell'ambiente di lavoro
-    def __str__(self):
-        return self.nome
+
 
 
 # creazione modello strumento con id_ambiente come attributo chiave esterna##
@@ -74,8 +73,7 @@ class Strumento(models.Model):
     tipologia = models.CharField(max_length=56)
     dipendenti = models.ManyToManyField ('Dipendente', blank=True)
 
-    def __str__(self):
-        return self.nome+ ' ' + self.modello + ' ' + self.tipologia
+
 
 
 
