@@ -20,17 +20,7 @@ INSERT into factorymanagerapp_ambiente (nome,ubicazione) VALUES ("Sala Riunioni"
  
 
 INSERT into factorymanagerapp_strumento (nome,modello,marca,annoAcquisto,tipologia,ambiente_id) VALUES ("Stampante HP", "F112", "HP", "2015", "Stampante",(SELECT id FROM factorymanagerapp_ambiente WHERE nome = "Ufficio Sviluppatori"));
- INSERT into factorymanagerapp_strumento (nome,modello,marca,annoAcquisto,tipologia,ambiente_id) VALUES ("Portatile Lenovo", "P990", "Lenovo", "2016", "Notebook",(SELECT id FROM factorymanagerapp_ambiente WHERE nome = "Magazzino centrale"));
+INSERT into factorymanagerapp_strumento (nome,modello,marca,annoAcquisto,tipologia,ambiente_id) VALUES ("Portatile Lenovo", "P990", "Lenovo", "2016", "Notebook",(SELECT id FROM factorymanagerapp_ambiente WHERE nome = "Magazzino centrale"));
 INSERT into factorymanagerapp_strumento (nome,modello,marca,annoAcquisto,tipologia,ambiente_id) VALUES ("Stampante HP", "F113", "HP", "2015", "Stampante",(SELECT id FROM factorymanagerapp_ambiente WHERE nome = "Sala Riunioni" AND ubicazione = "Palazzo principale"));
 INSERT into factorymanagerapp_strumento (nome,modello,marca,annoAcquisto,tipologia,ambiente_id) VALUES ("Computer", "F114", "Packard Bell", "2012", "Personal Computer",(SELECT id FROM factorymanagerapp_ambiente WHERE nome = "Ufficio Amministrativo"));
 INSERT into factorymanagerapp_strumento (nome,modello,marca,annoAcquisto,tipologia,ambiente_id) VALUES ("Computer", "F220X", "Asus", "2016", "Personal Computer",(SELECT id FROM factorymanagerapp_ambiente WHERE nome = "Sala Riunioni" AND ubicazione = "Edificio C18"));
-
-INSERT into factorymanagerapp_lavora (postazioneFissa, ambiente_id, id_dipendente_id) VALUES (0, (SELECT factorymanagerapp_ambiente.id FROM factorymanagerapp_ambiente WHERE nome = "Ufficio Amministrativo"), (SELECT factorymanagerapp_dipendente.id FROM factorymanagerapp_dipendente WHERE nome ="Ivan"));
-INSERT into factorymanagerapp_lavora (postazioneFissa, ambiente_id, id_dipendente_id) VALUES (1, (SELECT factorymanagerapp_ambiente.id FROM factorymanagerapp_ambiente WHERE nome = "Magazzino centrale"), (SELECT factorymanagerapp_dipendente.id FROM factorymanagerapp_dipendente WHERE nome ="Marco"));
-INSERT into factorymanagerapp_lavora (postazioneFissa, ambiente_id, id_dipendente_id) VALUES (1, (SELECT factorymanagerapp_ambiente.id FROM factorymanagerapp_ambiente WHERE nome = "Sala Riunioni" AND ubicazione = "Palazzo principale"), (SELECT factorymanagerapp_dipendente.id FROM factorymanagerapp_dipendente WHERE nome ="Giorgio"));
-INSERT into factorymanagerapp_lavora (postazioneFissa, ambiente_id, id_dipendente_id) VALUES (0, (SELECT factorymanagerapp_ambiente.id FROM factorymanagerapp_ambiente WHERE nome = "Ufficio Sviluppatori"), (SELECT factorymanagerapp_dipendente.id FROM factorymanagerapp_dipendente WHERE nome ="Michele"));
-
-INSERT into factorymanagerapp_utilizza (id_dipendente_id, id_strumento_id) VALUES ((SELECT id from factorymanagerapp_dipendente where nome="Michele"), (SELECT id from factorymanagerapp_strumento where modello = "F220X"));
-INSERT into factorymanagerapp_utilizza (id_dipendente_id, id_strumento_id) VALUES ((SELECT id from factorymanagerapp_dipendente where nome="Giorgio"), (SELECT id from factorymanagerapp_strumento where modello = "F114"));
-INSERT into factorymanagerapp_utilizza (id_dipendente_id, id_strumento_id) VALUES ((SELECT id from factorymanagerapp_dipendente where nome="Marco"), (SELECT id from factorymanagerapp_strumento where modello = "P990"));
-INSERT into factorymanagerapp_utilizza (id_dipendente_id, id_strumento_id) VALUES ((SELECT id from factorymanagerapp_dipendente where nome="Ivan"), (SELECT id from factorymanagerapp_strumento where modello = "F113"));
