@@ -36,22 +36,36 @@ class StrumentoAdmin(admin.ModelAdmin):
     filter_horizontal = ('dipendenti', )
     list_display = ('nome', 'marca', 'modello',)
     fieldsets = [
-        ('Strumenti',
+        ('Strumento',
          {'fields': ['nome', 'modello', 'marca', 'ambiente', 'annoAcquisto', 'tipologia', 'dipendenti']}),
     ]
     ordering = ('tipologia', 'marca', 'modello',)
 
 
+class MansioneAdmin(admin.ModelAdmin):
+    list_display = ('nome',)
+    fieldsets = [
+        ('Mansione',
+         {'fields': ['nome',]}),
+    ]
 
 
+class DipendenteAdmin(admin.ModelAdmin):
+
+    list_display = ('nome','cognome','codiceFiscale',)
+    fieldsets = [
+        ('Dipendenti',
+         {'fields': ['nome','cognome','sesso','dataNascita','codiceFiscale','email','telefono','domicilio','mansione',]})
+    ]
+    ordering = ('mansione',)
 #
 # # Register your models here.
 #
 # admin.site.register(Strumento,StrumentoAdmin)
 # admin.site.register(Dipendente, DipendenteAdmin)
 # admin.site.register(Mansione)
-admin.site.register(Mansione)
+admin.site.register(Mansione,MansioneAdmin)
 admin.site.register(Ambiente, AmbienteAdmin)
-admin.site.register(Dipendente)
+admin.site.register(Dipendente, DipendenteAdmin)
 admin.site.register(Strumento, StrumentoAdmin)
 
