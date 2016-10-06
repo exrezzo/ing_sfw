@@ -22,6 +22,7 @@ class Mansione(models.Model):
     def __str__(self):
         return self.nome
 
+
 # 'Dipendente'
 # definizione attributi generici di dipendente
 class Dipendente(models.Model):
@@ -39,8 +40,7 @@ class Dipendente(models.Model):
     domicilio = models.CharField(max_length=32)
     mansione = models.ForeignKey(Mansione)
 
-    def __str__(self):
-        return str(self.codiceFiscale) + ' - ' + str(self.nome) + ' ' + self.cognome
+
 
 # Modello Ambiente di lavoro
 class Ambiente(models.Model):
