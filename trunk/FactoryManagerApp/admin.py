@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import *
+from django.forms import ModelForm
+from suit.widgets import EnclosedInput
 
 
 # #visualizzare gli strumenti
@@ -46,6 +48,7 @@ class StrumentoAdmin(admin.ModelAdmin):
 
 
 class MansioneAdmin(admin.ModelAdmin):
+
     list_display = ('nome',)
     fieldsets = [
         ('Mansione',
@@ -54,8 +57,9 @@ class MansioneAdmin(admin.ModelAdmin):
     search_fields = ('nome',)
 
 
-class DipendenteAdmin(admin.ModelAdmin):
 
+class DipendenteAdmin(admin.ModelAdmin):
+    list_filter = ('codiceFiscale', 'cognome', 'email', 'mansione', )
     list_display = ('nome','cognome','codiceFiscale',)
     fieldsets = [
         ('Dipendenti',
@@ -69,7 +73,7 @@ class DipendenteAdmin(admin.ModelAdmin):
 # admin.site.register(Strumento,StrumentoAdmin)
 # admin.site.register(Dipendente, DipendenteAdmin)
 # admin.site.register(Mansione)
-admin.site.register(Mansione,MansioneAdmin)
+admin.site.register(Mansione, MansioneAdmin)
 admin.site.register(Ambiente, AmbienteAdmin)
 admin.site.register(Dipendente, DipendenteAdmin)
 admin.site.register(Strumento, StrumentoAdmin)
