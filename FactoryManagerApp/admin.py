@@ -24,7 +24,8 @@ from suit.widgets import EnclosedInput
 
 class AmbienteAdmin(admin.ModelAdmin):
     filter_horizontal = ('dipendenti',)
-    list_display = ('nome', 'ubicazione')
+    list_display = ('nome', 'ubicazione',)
+    list_filter = ('ubicazione','numeroPiano','dipendenti',)
     fieldsets = [
         ('Ambiente', {'fields': ['nome', 'numeroFinestre', 'numeroPorte', 'numeroPiano', 'ubicazione', 'dipendenti']}),
     ]
