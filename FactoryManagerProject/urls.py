@@ -18,5 +18,4 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 ]
-# la barra di navigazione delle pagine ha factory manager administration invece di Django admin
-admin.site.site_header='Factory Manager Administration'
+
