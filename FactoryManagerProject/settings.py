@@ -60,6 +60,17 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'FactoryManagerProject.urls'
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'factorymanagerdb',
+        #'HOST':'127.0.0.1',
+         'PORT':'3307',
+        'USER':'root',
+        'PASSWORD':'root',
+    }
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
