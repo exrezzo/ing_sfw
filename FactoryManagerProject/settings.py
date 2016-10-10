@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'suit',
+    'site-packages.suit',
+    'phonenumber_field',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,22 +60,14 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'FactoryManagerProject.urls'
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'factorymanagerdb',
-        #'HOST':'127.0.0.1',
-         'PORT':'3307',
-        'USER':'root',
-        'PASSWORD':'root',
-    }
-}
-
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+print(os.path.join(BASE_DIR, 'docs'))
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'docs'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,6 +76,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+            ]
         },
     },
 ]

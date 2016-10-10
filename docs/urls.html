@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>urls.py</title>
+  <link rel="stylesheet" href="pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>urls.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <h3><span id="configurazione-urls-per-factorymanagerapp" href="configurazione-urls-per-factorymanagerapp"> Configurazione URLS per FactoryManagerApp </span></h3>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>url che porta alla scheda descrittiva del database</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^schedadescrittiva/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">schedaDescrittiva</span> <span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">),</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <p>url che porta alla scheda descrittiva dei dipendenti</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^dipendenti/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">schedaDipendenti</span> <span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;dip&#39;</span><span class="p">),</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      <p>url che porta alla scheda descrittiva degli ambienti</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^ambienti/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">schedaAmbienti</span> <span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;space&#39;</span><span class="p">),</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      <p>url che porta alla scheda descrittiva degli strumenti</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^strumenti/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">schedaStrumenti</span> <span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;tools&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>

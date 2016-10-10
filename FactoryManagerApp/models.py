@@ -1,17 +1,18 @@
 from django.db import models
+from phonenumber_field.modelfields import *
 
-# Aggiungo dizionario per sesso
+# === Modelli per FactoryManagerApp ===
+
+# Dizionario per il sesso, ovvero per limitare le scelte possibili per il campo 'sesso' relativo ai dipendenti.
 SESSO = (
     ('M', 'Maschio'),
     ('F', 'Femmina'),
 )
 
-
-# Create your models here.
-
-# 'Mansione'
-# @param nome: denominazione mansione eseguita dal Dipendente
 class Mansione(models.Model):
+    """
+    La classe Mansione identifica le possibili mansioni ricopribili in una azienda.
+    """
     class Meta:
         verbose_name = 'Mansione'
         verbose_name_plural = 'Mansioni' \
@@ -19,13 +20,17 @@ class Mansione(models.Model):
 
     nome = models.CharField(max_length=32)
 
+    #return: il nome della mansione
     def __str__(self):
         return self.nome
 
 
-# 'Dipendente'
-# definizione attributi generici di dipendente
+
 class Dipendente(models.Model):
+    """
+    La classe Dipendente identifica un dipendente all'interno di un'azienda.
+    Gli attributi di classe specificano le caratteristiche possedute da un dipendente.
+    """
     class Meta:
         verbose_name = 'Dipendente'
         verbose_name_plural = 'Dipendenti'
@@ -36,17 +41,23 @@ class Dipendente(models.Model):
     dataNascita = models.DateField()
     codiceFiscale = models.CharField(max_length=16)
     email = models.CharField(max_length=32)
-    telefono = models.CharField(max_length=16)
+    telefono = PhoneNumberField()
     domicilio = models.CharField(max_length=32)
     mansione = models.ForeignKey(Mansione)
 
 
+    #return: codice fiscale, nome e cognome:
+    #tali parametri identificano unicamente il soggetto nel database.
     def __str__(self):
      return  self.codiceFiscale + ' - ' + self.nome+' '+ self.cognome
 
 
-# Modello Ambiente di lavoro
+
 class Ambiente(models.Model):
+    """
+    La classe Ambiente identifica un ambiente di lavoro, con le proprie caratteristiche interne ed il posizionamento
+    all'interno dell'edificio aziendale, insieme ai dipendenti che vi lavorano all'interno di ognuno.
+    """
     class Meta:
         verbose_name = 'Ambiente'
         verbose_name_plural = 'Ambienti'
@@ -58,13 +69,17 @@ class Ambiente(models.Model):
     ubicazione = models.CharField(max_length=56)
     dipendenti = models.ManyToManyField(Dipendente)
 
-    #   funzione che ritorna il nome dell'ambiente di lavoro
+    #return: il nome dell'ambiente di lavoro
     def __str__(self):
         return self.nome + ' ' + str(self.ubicazione)
 
 
-# creazione modello strumento con id_ambiente come attributo chiave esterna##
 class Strumento(models.Model):
+    """
+    La classe Strumento identifica tutta la strumentazione presente all'interno di un'azienda, locazione, anagrafica
+    dello strumento e a quali dipendenti e' stato assegnato.
+    """
+
     class Meta:
         verbose_name = 'Strumento'
         verbose_name_plural = 'Strumenti'
@@ -76,39 +91,6 @@ class Strumento(models.Model):
     annoAcquisto = models.CharField(max_length=56, null=True, blank=True)
     tipologia = models.CharField(max_length=56)
     dipendenti = models.ManyToManyField ('Dipendente', blank=True)
-
-
-
-
-
-
-
-
-
-# Associa un dipendente ad uno o piu luoghi di lavoro.
-# class Lavora(models.Model):
-#     class Meta:
-#         unique_together = (('id_dipendente', 'id_ambiente'),)
-#         verbose_name = 'Lavora'
-#         verbose_name_plural = 'Lavorano'
-#
-#     id_dipendente = models.ForeignKey(Dipendente)
-#     id_ambiente = models.ForeignKey(Ambiente)
-#     postazioneFissa = models.BooleanField()
-#
-#     def __str__(self):
-#         return self.id_ambiente.nomeAmbiente
-
-
-# # Esprime l'assengazione degli strumenti ai dipendenti.
-# class Utilizza(models.Model):
-#     class Meta:
-#         unique_together = (('id_dipendente', 'id_strumento'))
-#         verbose_name = 'Utilizza'
-#         verbose_name_plural = 'Utilizzano'
-#
-#     id_dipendente = models.ForeignKey(Dipendente)
-#     id_strumento = models.ForeignKey(Strumento)
-#
-#     def __str__(self):
-#         return self.id_dipendente.nome
+    # return: il nome dello strumento, marca e modello
+    def __str__(self):
+        return self.nome + ' ' + str(self.marca)+ ' ' + str(self.modello)

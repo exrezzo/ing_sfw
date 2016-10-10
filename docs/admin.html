@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>admin.py</title>
+  <link rel="stylesheet" href="pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>admin.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="o">*</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <h3><span id="configurazione-classi-per-la-personalizzazione-interfacce-admin-per-factorymanagerapp" href="configurazione-classi-per-la-personalizzazione-interfacce-admin-per-factorymanagerapp"> Configurazione classi per la personalizzazione interfacce admin per FactoryManagerApp </span></h3>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>Classe AmbienteAdmin per l'amministrazione degli ambienti relativi all'azienda.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">class</span> <span class="nc">AmbienteAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <p>Fornisce un'interfaccia utile alla ricerca delle relative chiavi esterne.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">filter_horizontal</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;dipendenti&#39;</span><span class="p">,)</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;nome&#39;</span><span class="p">,</span> <span class="s1">&#39;ubicazione&#39;</span><span class="p">,)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      <p>Fornisce un'interfaccia per filtrare i dati.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;ubicazione&#39;</span><span class="p">,</span><span class="s1">&#39;numeroPiano&#39;</span><span class="p">,</span><span class="s1">&#39;dipendenti&#39;</span><span class="p">,)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      <p>Visualizza gli strumenti presenti in quell'ambiente e i dipendenti associati a tale ambiente.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">fieldsets</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;Ambiente&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;nome&#39;</span><span class="p">,</span> <span class="s1">&#39;numeroFinestre&#39;</span><span class="p">,</span> <span class="s1">&#39;numeroPorte&#39;</span><span class="p">,</span> <span class="s1">&#39;numeroPiano&#39;</span><span class="p">,</span> <span class="s1">&#39;ubicazione&#39;</span><span class="p">,</span> <span class="s1">&#39;dipendenti&#39;</span><span class="p">]}),</span>
+    <span class="p">]</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-6'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-6'>#</a>
+      </div>
+      <p>Ordina e raggruppa i dati in base all'ubicazione.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">ordering</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;ubicazione&#39;</span><span class="p">,)</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;nome&#39;</span><span class="p">,</span> <span class="s1">&#39;ubicazione&#39;</span><span class="p">,</span> <span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-7'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-7'>#</a>
+      </div>
+      <p>Classe StrumentoAdmin per l'amministrazione degli strumenti relativi all'azienda.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">class</span> <span class="nc">StrumentoAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-8'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-8'>#</a>
+      </div>
+      <p>Fornisce un'interfaccia utile alla ricerca delle relative chiavi esterne.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">filter_horizontal</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;dipendenti&#39;</span><span class="p">,</span> <span class="p">)</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;nome&#39;</span><span class="p">,</span> <span class="s1">&#39;marca&#39;</span><span class="p">,</span> <span class="s1">&#39;modello&#39;</span><span class="p">,)</span>
+    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;marca&#39;</span><span class="p">,</span><span class="s1">&#39;nome&#39;</span><span class="p">,</span><span class="s1">&#39;dipendenti&#39;</span><span class="p">,</span> <span class="s1">&#39;ambiente&#39;</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-9'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-9'>#</a>
+      </div>
+      <p>Visualizza gli strumenti e i dipendenti ad essi associati</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">fieldsets</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;Strumento&#39;</span><span class="p">,</span>
+         <span class="p">{</span><span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;nome&#39;</span><span class="p">,</span> <span class="s1">&#39;modello&#39;</span><span class="p">,</span> <span class="s1">&#39;marca&#39;</span><span class="p">,</span> <span class="s1">&#39;ambiente&#39;</span><span class="p">,</span> <span class="s1">&#39;annoAcquisto&#39;</span><span class="p">,</span> <span class="s1">&#39;tipologia&#39;</span><span class="p">,</span> <span class="s1">&#39;dipendenti&#39;</span><span class="p">]}),</span>
+    <span class="p">]</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-10'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-10'>#</a>
+      </div>
+      <p>Ordina e raggruppa i dati in base a tipologia, marca e modello.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">ordering</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;tipologia&#39;</span><span class="p">,</span> <span class="s1">&#39;marca&#39;</span><span class="p">,</span> <span class="s1">&#39;modello&#39;</span><span class="p">,)</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;nome&#39;</span><span class="p">,</span> <span class="s1">&#39;marca&#39;</span><span class="p">,</span> <span class="s1">&#39;modello&#39;</span><span class="p">,</span> <span class="s1">&#39;tipologia&#39;</span><span class="p">,</span> <span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-11'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-11'>#</a>
+      </div>
+      <p>Classe MansioneAdmin per l'amministrazione delle mansioni relative all'azienda.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">class</span> <span class="nc">MansioneAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;nome&#39;</span><span class="p">,)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-12'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-12'>#</a>
+      </div>
+      <p>Visualizza le mansioni</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">fieldsets</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;Mansione&#39;</span><span class="p">,</span>
+         <span class="p">{</span><span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;nome&#39;</span><span class="p">,]}),</span>
+    <span class="p">]</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;nome&#39;</span><span class="p">,)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-13'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-13'>#</a>
+      </div>
+      <p>Classe DipendenteAdmin per l'amministrazione dei dipendenti dell'azienda.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">class</span> <span class="nc">DipendenteAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-14'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-14'>#</a>
+      </div>
+      <p>Fornisce un'interfaccia utile alla ricerca delle relative chiavi esterne.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;codiceFiscale&#39;</span><span class="p">,</span> <span class="s1">&#39;cognome&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;mansione&#39;</span><span class="p">,</span> <span class="p">)</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;nome&#39;</span><span class="p">,</span><span class="s1">&#39;cognome&#39;</span><span class="p">,</span><span class="s1">&#39;codiceFiscale&#39;</span><span class="p">,)</span>
+    <span class="n">fieldsets</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;Dipendenti&#39;</span><span class="p">,</span>
+         <span class="p">{</span><span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;nome&#39;</span><span class="p">,</span><span class="s1">&#39;cognome&#39;</span><span class="p">,</span><span class="s1">&#39;sesso&#39;</span><span class="p">,</span><span class="s1">&#39;dataNascita&#39;</span><span class="p">,</span><span class="s1">&#39;codiceFiscale&#39;</span><span class="p">,</span><span class="s1">&#39;email&#39;</span><span class="p">,</span><span class="s1">&#39;telefono&#39;</span><span class="p">,</span><span class="s1">&#39;domicilio&#39;</span><span class="p">,</span><span class="s1">&#39;mansione&#39;</span><span class="p">,]})</span>
+    <span class="p">]</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-15'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-15'>#</a>
+      </div>
+      <p>Ordina e raggruppa i dati in base alla mansione svolta dal dipendente.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">ordering</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;mansione&#39;</span><span class="p">,)</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;nome&#39;</span><span class="p">,</span> <span class="s1">&#39;cognome&#39;</span><span class="p">,</span> <span class="s1">&#39;codiceFiscale&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;domicilio&#39;</span><span class="p">,</span> <span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-16'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-16'>#</a>
+      </div>
+      <p>Registrazione dei modelli creati</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Mansione</span><span class="p">,</span> <span class="n">MansioneAdmin</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Ambiente</span><span class="p">,</span> <span class="n">AmbienteAdmin</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Dipendente</span><span class="p">,</span> <span class="n">DipendenteAdmin</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Strumento</span><span class="p">,</span> <span class="n">StrumentoAdmin</span><span class="p">)</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>
