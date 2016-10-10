@@ -60,14 +60,11 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'FactoryManagerProject.urls'
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-print(os.path.join(BASE_DIR, 'docs'))
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'docs'),
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,9 +73,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'loaders': [
-                'django.template.loaders.filesystem.Loader',
-            ]
         },
     },
 ]
