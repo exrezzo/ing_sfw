@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^ambienti/', views.schedaAmbienti , name='space'),
     # url che porta alla scheda descrittiva degli strumenti
     url(r'^strumenti/', views.schedaStrumenti , name='tools'),
-    url(r'^documentazione/', views.documentazione),
+    # url che permette di scaricare il pdf del report completo
+    url(r'^schedapdf/', views.pdf_view , name='schedapdf'),
 ]

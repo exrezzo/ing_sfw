@@ -15,7 +15,6 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -27,12 +26,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = (
     'site-packages.suit',
     'phonenumber_field',
+    'django_xhtml2pdf',
+    'xhtml2pdf',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -61,6 +61,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'FactoryManagerProject.urls'
 
+# i template caricati
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -77,9 +78,7 @@ TEMPLATES = [
     },
 ]
 
-
 WSGI_APPLICATION = 'FactoryManagerProject.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -111,14 +110,13 @@ SUIT_CONFIG = {
 
 LANGUAGE_CODE = 'it-IT'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Rome'
 
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/

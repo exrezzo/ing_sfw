@@ -1,4 +1,4 @@
-USE factory_manager_db;
+USE grptamma$factorymanagerdb;
 
 INSERT into factorymanagerapp_mansione (nome) VALUES ("Impiegato");
 INSERT into factorymanagerapp_mansione (nome) VALUES ("Segretario");
@@ -8,8 +8,8 @@ INSERT into factorymanagerapp_mansione (nome) VALUES ("Magazziniere");
 
 INSERT into factorymanagerapp_dipendente (nome,cognome,sesso,dataNascita,codiceFiscale,email,telefono,domicilio,mansione_id) VALUES ("Michele","Tamma","Maschio","1995-01-27","TMMMHL95A27A662A","michele.tamma@gmail.com","3409415249","via oberdan 56-i", (SELECT factorymanagerapp_mansione.id FROM factorymanagerapp_mansione where factorymanagerapp_mansione.nome = "Sviluppatore")); 
 INSERT into factorymanagerapp_dipendente (nome,cognome,sesso,dataNascita,codiceFiscale,email,telefono,domicilio,mansione_id) VALUES ("Giorgio","Papa","Maschio","1994-02-17","PPARG94B17A662E","giorgiopapa94@gmail.com","3383711987","via straziota 99", (SELECT factorymanagerapp_mansione.id FROM factorymanagerapp_mansione where factorymanagerapp_mansione.nome = "Direttore")); 
-INSERT into factorymanagerapp_dipendente (nome,cognome,sesso,dataNascita,codiceFiscale,email,telefono,domicilio,mansione_id) VALUES ("Ivan","Ardillo","Maschio","1993-01-27","TMMMHL95B27A662A","ivan.ardillo@gmail.com","3409418749","via oberdan 59-i", (SELECT factorymanagerapp_mansione.id FROM factorymanagerapp_mansione where factorymanagerapp_mansione.nome = "Segretario")); 
-INSERT into factorymanagerapp_dipendente (nome,cognome,sesso,dataNascita,codiceFiscale,email,telefono,domicilio,mansione_id) VALUES ("Marco","Uva","Femmina","1992-01-30","TMMMHL95A27A662Z","marco.uvA@gmail.com","3379415249","via MELO 56-i", (SELECT factorymanagerapp_mansione.id FROM factorymanagerapp_mansione where factorymanagerapp_mansione.nome = "Magazziniere")); 
+INSERT into factorymanagerapp_dipendente (nome,cognome,sesso,dataNascita,codiceFiscale,email,telefono,domicilio,mansione_id) VALUES ("Ivan","Ardillo","Maschio","1993-01-27","RDLVNI92L04A662W","ivan.ardillo@gmail.com","3923833711","via bari 59-i", (SELECT factorymanagerapp_mansione.id FROM factorymanagerapp_mansione where factorymanagerapp_mansione.nome = "Segretario")); 
+INSERT into factorymanagerapp_dipendente (nome,cognome,sesso,dataNascita,codiceFiscale,email,telefono,domicilio,mansione_id) VALUES ("Marco","Uva","Femmina","1992-01-30","VUAMRC92D11A662G","marco.uvA@gmail.com","3379415249","via amendola 12", (SELECT factorymanagerapp_mansione.id FROM factorymanagerapp_mansione where factorymanagerapp_mansione.nome = "Magazziniere")); 
 
 
 INSERT into factorymanagerapp_ambiente (nome,ubicazione) VALUES ("Ufficio Amministrativo","Palazzo principale");

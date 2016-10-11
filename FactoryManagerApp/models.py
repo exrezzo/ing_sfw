@@ -1,5 +1,5 @@
 from django.db import models
-from phonenumber_field.modelfields import *
+from phonenumber_field.modelfields import PhoneNumberField
 
 # === Modelli per FactoryManagerApp ===
 

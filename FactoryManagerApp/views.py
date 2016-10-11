@@ -1,8 +1,16 @@
-from django.shortcuts import render
+import StringIO
+
 from django.http import HttpResponse
-import datetime
-from .models import *
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+from django.template.loader import render_to_string
+from xhtml2pdf import pisa
+
+from .models import Strumento
+from .models import Ambiente
+from .models import Dipendente
 from django.template import Context, loader
+
 
 # === Viste per FactoryManagerApp ===
 
@@ -17,6 +25,7 @@ def schedaDescrittiva(request):
 
     template = loader.get_template('vista.html')
     return HttpResponse(template.render(context))
+
 
 # Vista del report relativo alla descrizione dei dipendenti.
 def schedaDipendenti(request):
@@ -41,6 +50,7 @@ def schedaAmbienti(request):
     template = loader.get_template('ambiente.html')
     return HttpResponse(template.render(context))
 
+
 # Vista del report relativo alla descrizione degli strumenti.
 def schedaStrumenti(request):
     # Context e' un dizionario Python le cui chiavi possono essere accedute nel template strumenti.html
@@ -52,5 +62,24 @@ def schedaStrumenti(request):
 
     template = loader.get_template('strumenti.html')
     return HttpResponse(template.render(context))
-def documentazione (request):
-    template = loader.get_template("/docs/models.html")
+
+
+def html_view(request, as_pdf=False):
+    # Get varaibles to populate the template
+    payload = {'dipendenti': Dipendente.objects.all(),
+               'strumenti': Strumento.objects.all(),
+               'ambienti': Ambiente.objects.all(), }
+    if as_pdf:
+        return payload
+    return render_to_response('topdf.html', payload, RequestContext(request))
+
+
+def pdf_view(request):
+    payload = html_view(request, as_pdf=True)
+    file_data = render_to_string('topdf.html', payload, RequestContext(request))
+    myfile = StringIO.StringIO()
+    pisa.CreatePDF(file_data, myfile)
+    myfile.seek(0)
+    response = HttpResponse(myfile, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename=report.pdf'
+    return response

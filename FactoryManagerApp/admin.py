@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import *
+from .models import Mansione
+from .models import Ambiente
+from .models import Dipendente
+from .models import Strumento
 
 # === Configurazione classi per la personalizzazione interfacce admin per FactoryManagerApp ===
 
